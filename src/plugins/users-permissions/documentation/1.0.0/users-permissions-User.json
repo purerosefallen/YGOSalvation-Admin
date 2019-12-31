@@ -1187,6 +1187,13 @@
           "elo": {
             "type": "integer",
             "default": "1200"
+          },
+          "service": {
+            "type": "boolean"
+          },
+          "points": {
+            "type": "integer",
+            "default": "0"
           }
         }
       },
@@ -1231,6 +1238,13 @@
           "elo": {
             "type": "integer",
             "default": "1200"
+          },
+          "service": {
+            "type": "boolean"
+          },
+          "points": {
+            "type": "integer",
+            "default": "0"
           }
         }
       }

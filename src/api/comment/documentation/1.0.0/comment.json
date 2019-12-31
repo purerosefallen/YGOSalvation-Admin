@@ -558,6 +558,12 @@
               },
               "elo": {
                 "type": "integer"
+              },
+              "service": {
+                "type": "boolean"
+              },
+              "points": {
+                "type": "integer"
               }
             }
           },
