@@ -54,7 +54,7 @@
   },
   "ip": {
     "enabled": false,
-    "whiteList": [],
+    "whiteList": ["0.0.0.0", "127.0.0.1", "localhost"],
     "blackList": []
   }
 }

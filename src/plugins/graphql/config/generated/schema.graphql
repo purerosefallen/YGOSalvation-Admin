@@ -14,14 +14,6 @@ type createRolePayload {
   role: UsersPermissionsRole
 }
 
-input createStatusInput {
-  data: StatusInput
-}
-
-type createStatusPayload {
-  status: Status
-}
-
 input createUserInput {
   data: UserInput
 }
@@ -139,14 +131,6 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
-input deleteStatusInput {
-  where: InputID
-}
-
-type deleteStatusPayload {
-  status: Status
-}
-
 input deleteUserInput {
   where: InputID
 }
@@ -184,10 +168,6 @@ input editRoleInput {
   users: [ID]
 }
 
-input editStatusInput {
-  status: ENUM_STATUS_STATUS
-}
-
 input editUserInput {
   username: String
   email: String
@@ -197,12 +177,6 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
-}
-
-enum ENUM_STATUS_STATUS {
-  active
-  updating
-  down
 }
 
 input FileInput {
@@ -230,15 +204,12 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | Status | createStatusPayload | updateStatusPayload | deleteStatusPayload | StatusConnection | StatusAggregator | StatusGroupBy | StatusConnection_id | StatusConnectionId | StatusConnectionCreatedAt | StatusConnectionUpdatedAt | StatusConnectionStatus | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createDeck(input: createDeckInput): createDeckPayload
   updateDeck(input: updateDeckInput): updateDeckPayload
   deleteDeck(input: deleteDeckInput): deleteDeckPayload
-  createStatus(input: createStatusInput): createStatusPayload
-  updateStatus(input: updateStatusInput): updateStatusPayload
-  deleteStatus(input: deleteStatusInput): deleteStatusPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -264,9 +235,6 @@ type Query {
   deck(id: ID!): Deck
   decks(sort: String, limit: Int, start: Int, where: JSON): [Deck]
   decksConnection(sort: String, limit: Int, start: Int, where: JSON): DeckConnection
-  status(id: ID!): Status
-  statuses(sort: String, limit: Int, start: Int, where: JSON): [Status]
-  statusesConnection(sort: String, limit: Int, start: Int, where: JSON): StatusConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -290,62 +258,6 @@ input RoleInput {
   users: [ID]
 }
 
-type Status {
-  _id: ID!
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  status: ENUM_STATUS_STATUS
-}
-
-type StatusAggregator {
-  count: Int
-  totalCount: Int
-}
-
-type StatusConnection {
-  values: [Status]
-  groupBy: StatusGroupBy
-  aggregate: StatusAggregator
-}
-
-type StatusConnection_id {
-  key: ID
-  connection: StatusConnection
-}
-
-type StatusConnectionCreatedAt {
-  key: DateTime
-  connection: StatusConnection
-}
-
-type StatusConnectionId {
-  key: ID
-  connection: StatusConnection
-}
-
-type StatusConnectionStatus {
-  key: String
-  connection: StatusConnection
-}
-
-type StatusConnectionUpdatedAt {
-  key: DateTime
-  connection: StatusConnection
-}
-
-type StatusGroupBy {
-  _id: [StatusConnection_id]
-  id: [StatusConnectionId]
-  createdAt: [StatusConnectionCreatedAt]
-  updatedAt: [StatusConnectionUpdatedAt]
-  status: [StatusConnectionStatus]
-}
-
-input StatusInput {
-  status: ENUM_STATUS_STATUS
-}
-
 input updateDeckInput {
   where: InputID
   data: editDeckInput
@@ -362,15 +274,6 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
-}
-
-input updateStatusInput {
-  where: InputID
-  data: editStatusInput
-}
-
-type updateStatusPayload {
-  status: Status
 }
 
 input updateUserInput {
