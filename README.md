@@ -1,9 +1,10 @@
 # YGOSalvation-Admin
 Content Management System for YGOSalvation based on Strapi
 
-#Setup
+# Setup
 - Install MongoDB
 - Install Nodist
+- Install Strapi and Set Nodejs to version 10 or higher.
 
 ```
 nodist 10
@@ -12,16 +13,12 @@ npm install
 cd src
 npm install
 ```
-#Configuration
+
+# Configuration
 - Setup a MongoDB user
 - Use `.env.sample` to a create a `.env` file with the proper configurations
-```
 
-```
-
-#Start
-```
-cd ./src
-strapi start
-```
+# Start
+- Make sure MongoDB is running
+- `npm run start`
 - In browser open http://localhost:1337/admin

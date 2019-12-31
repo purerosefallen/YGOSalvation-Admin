@@ -4,7 +4,7 @@
   "description": "Content Management System for YGOSalvation based on Strapi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "cd src && start strapi"
   },
   "repository": {
     "type": "git",
