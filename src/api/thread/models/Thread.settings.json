@@ -17,7 +17,8 @@
       "plugin": "users-permissions"
     },
     "forum": {
-      "model": "forum"
+      "model": "forum",
+      "via": "threads"
     }
   }
 }

@@ -518,12 +518,83 @@
           },
           "title": {
             "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "thread": {
+                  "type": "string"
+                },
+                "forum": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "threads": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "thread": {
+                  "type": "string"
+                },
+                "creator": {
+                  "type": "string"
+                },
+                "forum": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "link": {
+            "type": "string"
           }
         }
       },
       "NewForum": {
         "properties": {
           "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "threads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "link": {
             "type": "string"
           }
         }

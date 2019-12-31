@@ -555,6 +555,9 @@
               },
               "tournament": {
                 "type": "string"
+              },
+              "elo": {
+                "type": "integer"
               }
             }
           },
@@ -567,6 +570,24 @@
                 "type": "string"
               },
               "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "link": {
                 "type": "string"
               }
             }

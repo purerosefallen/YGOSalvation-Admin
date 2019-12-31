@@ -52,6 +52,10 @@
     "tournament": {
       "model": "tournament",
       "via": "contestants"
+    },
+    "elo": {
+      "type": "integer",
+      "default": "1200"
     }
   },
   "collectionName": "users-permissions_user"

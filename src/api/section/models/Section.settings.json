@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "section",
   "info": {
     "name": "section",
     "description": "Cluster of related Forums"
@@ -11,6 +11,13 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "index": {
+      "type": "integer",
+      "unique": true
     }
   }
 }

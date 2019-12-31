@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/31/2019 3:15:05 PM"
+    "x-generation-date": "12/31/2019 3:29:02 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -5682,6 +5682,9 @@
               },
               "tournament": {
                 "type": "string"
+              },
+              "elo": {
+                "type": "integer"
               }
             }
           },
@@ -5703,6 +5706,37 @@
                 "type": "string"
               }
             }
+          },
+          "forum": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "link": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -5715,6 +5749,9 @@
             "type": "string"
           },
           "thread": {
+            "type": "string"
+          },
+          "forum": {
             "type": "string"
           }
         }
@@ -5763,6 +5800,9 @@
               },
               "tournament": {
                 "type": "string"
+              },
+              "elo": {
+                "type": "integer"
               }
             }
           },
@@ -5809,12 +5849,83 @@
           },
           "title": {
             "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "thread": {
+                  "type": "string"
+                },
+                "forum": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "threads": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "thread": {
+                  "type": "string"
+                },
+                "creator": {
+                  "type": "string"
+                },
+                "forum": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "link": {
+            "type": "string"
           }
         }
       },
       "NewForum": {
         "properties": {
           "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "threads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "link": {
             "type": "string"
           }
         }
@@ -5829,6 +5940,12 @@
           },
           "title": {
             "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
           }
         }
       },
@@ -5836,6 +5953,12 @@
         "properties": {
           "title": {
             "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
           }
         }
       },
@@ -5886,6 +6009,9 @@
               },
               "tournament": {
                 "type": "string"
+              },
+              "elo": {
+                "type": "integer"
               }
             }
           },
@@ -5898,6 +6024,24 @@
                 "type": "string"
               },
               "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "threads": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "link": {
                 "type": "string"
               }
             }
@@ -5961,6 +6105,9 @@
               },
               "tournament": {
                 "type": "string"
+              },
+              "elo": {
+                "type": "integer"
               }
             }
           },
@@ -6002,6 +6149,9 @@
                 },
                 "tournament": {
                   "type": "string"
+                },
+                "elo": {
+                  "type": "integer"
                 }
               }
             }
@@ -6077,6 +6227,9 @@
               },
               "tournament": {
                 "type": "string"
+              },
+              "elo": {
+                "type": "integer"
               }
             }
           }
@@ -6227,6 +6380,9 @@
                 },
                 "tournament": {
                   "type": "string"
+                },
+                "elo": {
+                  "type": "integer"
                 }
               }
             }
@@ -6344,6 +6500,10 @@
                 "type": "boolean"
               }
             }
+          },
+          "elo": {
+            "type": "integer",
+            "default": "1200"
           }
         }
       },
@@ -6384,6 +6544,10 @@
           },
           "tournament": {
             "type": "string"
+          },
+          "elo": {
+            "type": "integer",
+            "default": "1200"
           }
         }
       },

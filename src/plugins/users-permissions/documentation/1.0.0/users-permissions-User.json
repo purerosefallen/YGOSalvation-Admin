@@ -1183,6 +1183,10 @@
                 "type": "boolean"
               }
             }
+          },
+          "elo": {
+            "type": "integer",
+            "default": "1200"
           }
         }
       },
@@ -1223,6 +1227,10 @@
           },
           "tournament": {
             "type": "string"
+          },
+          "elo": {
+            "type": "integer",
+            "default": "1200"
           }
         }
       }

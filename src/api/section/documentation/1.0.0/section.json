@@ -518,6 +518,12 @@
           },
           "title": {
             "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
           }
         }
       },
@@ -525,6 +531,12 @@
         "properties": {
           "title": {
             "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
           }
         }
       }

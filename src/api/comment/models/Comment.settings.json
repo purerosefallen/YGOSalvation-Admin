@@ -18,6 +18,10 @@
     },
     "thread": {
       "model": "thread"
+    },
+    "forum": {
+      "model": "forum",
+      "via": "comments"
     }
   }
 }

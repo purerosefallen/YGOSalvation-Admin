@@ -605,6 +605,9 @@
                 },
                 "tournament": {
                   "type": "string"
+                },
+                "elo": {
+                  "type": "integer"
                 }
               }
             }

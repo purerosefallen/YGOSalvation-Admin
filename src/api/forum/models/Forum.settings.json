@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "forum",
   "info": {
     "name": "forum",
     "description": ""
@@ -10,6 +10,20 @@
   },
   "attributes": {
     "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "forum"
+    },
+    "threads": {
+      "collection": "thread",
+      "via": "forum"
+    },
+    "link": {
       "type": "string"
     }
   }
