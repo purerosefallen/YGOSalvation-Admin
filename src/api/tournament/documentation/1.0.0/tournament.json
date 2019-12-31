@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/comments": {
+    "/tournaments": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Comment"
+                    "$ref": "#/components/schemas/Tournament"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Comment"
+          "Tournament"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comment"
+                  "$ref": "#/components/schemas/Tournament"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Comment"
+          "Tournament"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewComment"
+                "$ref": "#/components/schemas/NewTournament"
               }
             }
           }
         }
       }
     },
-    "/comments/count": {
+    "/tournaments/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Comment"
+          "Tournament"
         ],
         "parameters": []
       }
     },
-    "/comments/{_id}": {
+    "/tournaments/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comment"
+                  "$ref": "#/components/schemas/Tournament"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Comment"
+          "Tournament"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comment"
+                  "$ref": "#/components/schemas/Tournament"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Comment"
+          "Tournament"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewComment"
+                "$ref": "#/components/schemas/NewTournament"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Comment"
+          "Tournament"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "Comment": {
+      "Tournament": {
         "required": [
           "id"
         ],
@@ -516,10 +516,7 @@
           "id": {
             "type": "string"
           },
-          "content": {
-            "type": "string"
-          },
-          "user": {
+          "creator": {
             "required": [
               "id",
               "username",
@@ -558,37 +555,66 @@
               }
             }
           },
-          "thread": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "thread": {
-                "type": "string"
-              },
-              "creator": {
-                "type": "string"
-              },
-              "forum": {
-                "type": "string"
+          "contestants": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "username",
+                "email"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "resetPasswordToken": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "boolean"
+                },
+                "blocked": {
+                  "type": "boolean"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "tournament": {
+                  "type": "string"
+                }
               }
             }
+          },
+          "started": {
+            "type": "boolean"
           }
         }
       },
-      "NewComment": {
+      "NewTournament": {
         "properties": {
-          "content": {
+          "creator": {
             "type": "string"
           },
-          "user": {
-            "type": "string"
+          "contestants": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "thread": {
-            "type": "string"
+          "started": {
+            "type": "boolean"
           }
         }
       }
@@ -596,7 +622,7 @@
   },
   "tags": [
     {
-      "name": "Comment"
+      "name": "Tournament"
     }
   ]
 }

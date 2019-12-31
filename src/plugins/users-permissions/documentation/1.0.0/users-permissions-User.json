@@ -1161,6 +1161,28 @@
                 }
               }
             }
+          },
+          "tournament": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "creator": {
+                "type": "string"
+              },
+              "contestants": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "started": {
+                "type": "boolean"
+              }
+            }
           }
         }
       },
@@ -1197,6 +1219,9 @@
             "default": false
           },
           "role": {
+            "type": "string"
+          },
+          "tournament": {
             "type": "string"
           }
         }

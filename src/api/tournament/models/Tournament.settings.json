@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "tournament",
+  "info": {
+    "name": "tournament",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "creator": {
+      "model": "user",
+      "plugin": "users-permissions"
+    },
+    "contestants": {
+      "collection": "user",
+      "via": "tournament",
+      "plugin": "users-permissions"
+    },
+    "started": {
+      "type": "boolean"
+    }
+  }
+}

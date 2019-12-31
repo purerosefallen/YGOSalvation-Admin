@@ -118,6 +118,14 @@ type createThreadPayload {
   thread: Thread
 }
 
+input createTournamentInput {
+  data: TournamentInput
+}
+
+type createTournamentPayload {
+  tournament: Tournament
+}
+
 input createUpdatesInput {
   data: UpdatesInput
 }
@@ -275,6 +283,14 @@ type deleteThreadPayload {
   thread: Thread
 }
 
+input deleteTournamentInput {
+  where: InputID
+}
+
+type deleteTournamentPayload {
+  tournament: Tournament
+}
+
 input deleteUpdatesInput {
   where: InputID
 }
@@ -340,6 +356,12 @@ input editThreadInput {
   forum: ID
 }
 
+input editTournamentInput {
+  creator: ID
+  contestants: [ID]
+  started: Boolean
+}
+
 input editUpdatesInput {
   title: String
   body: String
@@ -355,6 +377,7 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  tournament: ID
 }
 
 input FileInput {
@@ -438,7 +461,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Comment | createCommentPayload | updateCommentPayload | deleteCommentPayload | CommentConnection | CommentAggregator | CommentGroupBy | CommentConnection_id | CommentConnectionId | CommentConnectionCreatedAt | CommentConnectionUpdatedAt | CommentConnectionContent | CommentConnectionUser | CommentConnectionThread | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | Forum | createForumPayload | updateForumPayload | deleteForumPayload | ForumConnection | ForumAggregator | ForumGroupBy | ForumConnection_id | ForumConnectionId | ForumConnectionCreatedAt | ForumConnectionUpdatedAt | ForumConnectionTitle | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionGroupBy | SectionConnection_id | SectionConnectionId | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionTitle | Thread | createThreadPayload | updateThreadPayload | deleteThreadPayload | ThreadConnection | ThreadAggregator | ThreadGroupBy | ThreadConnection_id | ThreadConnectionId | ThreadConnectionCreatedAt | ThreadConnectionUpdatedAt | ThreadConnectionThread | ThreadConnectionCreator | ThreadConnectionForum | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Comment | createCommentPayload | updateCommentPayload | deleteCommentPayload | CommentConnection | CommentAggregator | CommentGroupBy | CommentConnection_id | CommentConnectionId | CommentConnectionCreatedAt | CommentConnectionUpdatedAt | CommentConnectionContent | CommentConnectionUser | CommentConnectionThread | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | Forum | createForumPayload | updateForumPayload | deleteForumPayload | ForumConnection | ForumAggregator | ForumGroupBy | ForumConnection_id | ForumConnectionId | ForumConnectionCreatedAt | ForumConnectionUpdatedAt | ForumConnectionTitle | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionGroupBy | SectionConnection_id | SectionConnectionId | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionTitle | Thread | createThreadPayload | updateThreadPayload | deleteThreadPayload | ThreadConnection | ThreadAggregator | ThreadGroupBy | ThreadConnection_id | ThreadConnectionId | ThreadConnectionCreatedAt | ThreadConnectionUpdatedAt | ThreadConnectionThread | ThreadConnectionCreator | ThreadConnectionForum | Tournament | createTournamentPayload | updateTournamentPayload | deleteTournamentPayload | TournamentConnection | TournamentAggregator | TournamentGroupBy | TournamentConnection_id | TournamentConnectionId | TournamentConnectionCreatedAt | TournamentConnectionUpdatedAt | TournamentConnectionCreator | TournamentConnectionStarted | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionTournament
 
 type Mutation {
   createComment(input: createCommentInput): createCommentPayload
@@ -456,6 +479,9 @@ type Mutation {
   createThread(input: createThreadInput): createThreadPayload
   updateThread(input: updateThreadInput): updateThreadPayload
   deleteThread(input: deleteThreadInput): deleteThreadPayload
+  createTournament(input: createTournamentInput): createTournamentPayload
+  updateTournament(input: updateTournamentInput): updateTournamentPayload
+  deleteTournament(input: deleteTournamentInput): deleteTournamentPayload
   createUpdates(input: createUpdatesInput): createUpdatesPayload
   updateUpdates(input: updateUpdatesInput): updateUpdatesPayload
   deleteUpdates(input: deleteUpdatesInput): deleteUpdatesPayload
@@ -496,6 +522,9 @@ type Query {
   thread(id: ID!): Thread
   threads(sort: String, limit: Int, start: Int, where: JSON): [Thread]
   threadsConnection(sort: String, limit: Int, start: Int, where: JSON): ThreadConnection
+  tournament(id: ID!): Tournament
+  tournaments(sort: String, limit: Int, start: Int, where: JSON): [Tournament]
+  tournamentsConnection(sort: String, limit: Int, start: Int, where: JSON): TournamentConnection
   update(id: ID!): Updates
   updates(sort: String, limit: Int, start: Int, where: JSON): [Updates]
   updatesConnection(sort: String, limit: Int, start: Int, where: JSON): UpdatesConnection
@@ -651,6 +680,72 @@ input ThreadInput {
   forum: ID
 }
 
+type Tournament {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  creator: UsersPermissionsUser
+  started: Boolean
+  contestants(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type TournamentAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type TournamentConnection {
+  values: [Tournament]
+  groupBy: TournamentGroupBy
+  aggregate: TournamentAggregator
+}
+
+type TournamentConnection_id {
+  key: ID
+  connection: TournamentConnection
+}
+
+type TournamentConnectionCreatedAt {
+  key: DateTime
+  connection: TournamentConnection
+}
+
+type TournamentConnectionCreator {
+  key: ID
+  connection: TournamentConnection
+}
+
+type TournamentConnectionId {
+  key: ID
+  connection: TournamentConnection
+}
+
+type TournamentConnectionStarted {
+  key: Boolean
+  connection: TournamentConnection
+}
+
+type TournamentConnectionUpdatedAt {
+  key: DateTime
+  connection: TournamentConnection
+}
+
+type TournamentGroupBy {
+  _id: [TournamentConnection_id]
+  id: [TournamentConnectionId]
+  createdAt: [TournamentConnectionCreatedAt]
+  updatedAt: [TournamentConnectionUpdatedAt]
+  creator: [TournamentConnectionCreator]
+  started: [TournamentConnectionStarted]
+}
+
+input TournamentInput {
+  creator: ID
+  contestants: [ID]
+  started: Boolean
+}
+
 input updateCommentInput {
   where: InputID
   data: editCommentInput
@@ -776,6 +871,15 @@ input updateThreadInput {
 
 type updateThreadPayload {
   thread: Thread
+}
+
+input updateTournamentInput {
+  where: InputID
+  data: editTournamentInput
+}
+
+type updateTournamentPayload {
+  tournament: Tournament
 }
 
 input updateUpdatesInput {
@@ -917,6 +1021,7 @@ input UserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  tournament: ID
 }
 
 type UsersPermissionsMe {
@@ -1009,6 +1114,7 @@ type UsersPermissionsUser {
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRole
+  tournament: Tournament
 }
 
 type UsersPermissionsUserAggregator {
@@ -1057,6 +1163,11 @@ type UsersPermissionsUserConnectionRole {
   connection: UsersPermissionsUserConnection
 }
 
+type UsersPermissionsUserConnectionTournament {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
 type UsersPermissionsUserConnectionUsername {
   key: String
   connection: UsersPermissionsUserConnection
@@ -1071,4 +1182,5 @@ type UsersPermissionsUserGroupBy {
   confirmed: [UsersPermissionsUserConnectionConfirmed]
   blocked: [UsersPermissionsUserConnectionBlocked]
   role: [UsersPermissionsUserConnectionRole]
+  tournament: [UsersPermissionsUserConnectionTournament]
 }

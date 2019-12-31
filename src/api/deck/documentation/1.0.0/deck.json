@@ -549,6 +549,9 @@
               },
               "role": {
                 "type": "string"
+              },
+              "tournament": {
+                "type": "string"
               }
             }
           },
