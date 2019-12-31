@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "comment",
+  "info": {
+    "name": "comment",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "text"
+    },
+    "user": {
+      "model": "user",
+      "plugin": "users-permissions"
+    },
+    "thread": {
+      "model": "thread"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/threads",
+      "handler": "Thread.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/threads/count",
+      "handler": "Thread.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/threads/:_id",
+      "handler": "Thread.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/threads",
+      "handler": "Thread.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/threads/:_id",
+      "handler": "Thread.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/threads/:_id",
+      "handler": "Thread.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

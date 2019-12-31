@@ -1,3 +1,83 @@
+type Comment {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  content: String
+  user: UsersPermissionsUser
+  thread: Thread
+}
+
+type CommentAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type CommentConnection {
+  values: [Comment]
+  groupBy: CommentGroupBy
+  aggregate: CommentAggregator
+}
+
+type CommentConnection_id {
+  key: ID
+  connection: CommentConnection
+}
+
+type CommentConnectionContent {
+  key: String
+  connection: CommentConnection
+}
+
+type CommentConnectionCreatedAt {
+  key: DateTime
+  connection: CommentConnection
+}
+
+type CommentConnectionId {
+  key: ID
+  connection: CommentConnection
+}
+
+type CommentConnectionThread {
+  key: ID
+  connection: CommentConnection
+}
+
+type CommentConnectionUpdatedAt {
+  key: DateTime
+  connection: CommentConnection
+}
+
+type CommentConnectionUser {
+  key: ID
+  connection: CommentConnection
+}
+
+type CommentGroupBy {
+  _id: [CommentConnection_id]
+  id: [CommentConnectionId]
+  createdAt: [CommentConnectionCreatedAt]
+  updatedAt: [CommentConnectionUpdatedAt]
+  content: [CommentConnectionContent]
+  user: [CommentConnectionUser]
+  thread: [CommentConnectionThread]
+}
+
+input CommentInput {
+  content: String
+  user: ID
+  thread: ID
+}
+
+input createCommentInput {
+  data: CommentInput
+}
+
+type createCommentPayload {
+  comment: Comment
+}
+
 input createDeckInput {
   data: DeckInput
 }
@@ -6,12 +86,36 @@ type createDeckPayload {
   deck: Deck
 }
 
+input createForumInput {
+  data: ForumInput
+}
+
+type createForumPayload {
+  forum: Forum
+}
+
 input createRoleInput {
   data: RoleInput
 }
 
 type createRolePayload {
   role: UsersPermissionsRole
+}
+
+input createSectionInput {
+  data: SectionInput
+}
+
+type createSectionPayload {
+  section: Section
+}
+
+input createThreadInput {
+  data: ThreadInput
+}
+
+type createThreadPayload {
+  thread: Thread
 }
 
 input createUpdatesInput {
@@ -123,6 +227,14 @@ input DeckInput {
   name: String
 }
 
+input deleteCommentInput {
+  where: InputID
+}
+
+type deleteCommentPayload {
+  comment: Comment
+}
+
 input deleteDeckInput {
   where: InputID
 }
@@ -131,12 +243,36 @@ type deleteDeckPayload {
   deck: Deck
 }
 
+input deleteForumInput {
+  where: InputID
+}
+
+type deleteForumPayload {
+  forum: Forum
+}
+
 input deleteRoleInput {
   where: InputID
 }
 
 type deleteRolePayload {
   role: UsersPermissionsRole
+}
+
+input deleteSectionInput {
+  where: InputID
+}
+
+type deleteSectionPayload {
+  section: Section
+}
+
+input deleteThreadInput {
+  where: InputID
+}
+
+type deleteThreadPayload {
+  thread: Thread
 }
 
 input deleteUpdatesInput {
@@ -153,6 +289,12 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editCommentInput {
+  content: String
+  user: ID
+  thread: ID
 }
 
 input editDeckInput {
@@ -176,12 +318,26 @@ input editFileInput {
   related: [ID]
 }
 
+input editForumInput {
+  title: String
+}
+
 input editRoleInput {
   name: String
   description: String
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editSectionInput {
+  title: String
+}
+
+input editThreadInput {
+  thread: String
+  creator: ID
+  forum: ID
 }
 
 input editUpdatesInput {
@@ -214,6 +370,62 @@ input FileInput {
   related: [ID]
 }
 
+type Forum {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String
+}
+
+type ForumAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ForumConnection {
+  values: [Forum]
+  groupBy: ForumGroupBy
+  aggregate: ForumAggregator
+}
+
+type ForumConnection_id {
+  key: ID
+  connection: ForumConnection
+}
+
+type ForumConnectionCreatedAt {
+  key: DateTime
+  connection: ForumConnection
+}
+
+type ForumConnectionId {
+  key: ID
+  connection: ForumConnection
+}
+
+type ForumConnectionTitle {
+  key: String
+  connection: ForumConnection
+}
+
+type ForumConnectionUpdatedAt {
+  key: DateTime
+  connection: ForumConnection
+}
+
+type ForumGroupBy {
+  _id: [ForumConnection_id]
+  id: [ForumConnectionId]
+  createdAt: [ForumConnectionCreatedAt]
+  updatedAt: [ForumConnectionUpdatedAt]
+  title: [ForumConnectionTitle]
+}
+
+input ForumInput {
+  title: String
+}
+
 input InputID {
   id: ID!
 }
@@ -226,12 +438,24 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Comment | createCommentPayload | updateCommentPayload | deleteCommentPayload | CommentConnection | CommentAggregator | CommentGroupBy | CommentConnection_id | CommentConnectionId | CommentConnectionCreatedAt | CommentConnectionUpdatedAt | CommentConnectionContent | CommentConnectionUser | CommentConnectionThread | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | Forum | createForumPayload | updateForumPayload | deleteForumPayload | ForumConnection | ForumAggregator | ForumGroupBy | ForumConnection_id | ForumConnectionId | ForumConnectionCreatedAt | ForumConnectionUpdatedAt | ForumConnectionTitle | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionGroupBy | SectionConnection_id | SectionConnectionId | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionTitle | Thread | createThreadPayload | updateThreadPayload | deleteThreadPayload | ThreadConnection | ThreadAggregator | ThreadGroupBy | ThreadConnection_id | ThreadConnectionId | ThreadConnectionCreatedAt | ThreadConnectionUpdatedAt | ThreadConnectionThread | ThreadConnectionCreator | ThreadConnectionForum | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createComment(input: createCommentInput): createCommentPayload
+  updateComment(input: updateCommentInput): updateCommentPayload
+  deleteComment(input: deleteCommentInput): deleteCommentPayload
   createDeck(input: createDeckInput): createDeckPayload
   updateDeck(input: updateDeckInput): updateDeckPayload
   deleteDeck(input: deleteDeckInput): deleteDeckPayload
+  createForum(input: createForumInput): createForumPayload
+  updateForum(input: updateForumInput): updateForumPayload
+  deleteForum(input: deleteForumInput): deleteForumPayload
+  createSection(input: createSectionInput): createSectionPayload
+  updateSection(input: updateSectionInput): updateSectionPayload
+  deleteSection(input: deleteSectionInput): deleteSectionPayload
+  createThread(input: createThreadInput): createThreadPayload
+  updateThread(input: updateThreadInput): updateThreadPayload
+  deleteThread(input: deleteThreadInput): deleteThreadPayload
   createUpdates(input: createUpdatesInput): createUpdatesPayload
   updateUpdates(input: updateUpdatesInput): updateUpdatesPayload
   deleteUpdates(input: deleteUpdatesInput): deleteUpdatesPayload
@@ -257,9 +481,21 @@ type Mutation {
 }
 
 type Query {
+  comment(id: ID!): Comment
+  comments(sort: String, limit: Int, start: Int, where: JSON): [Comment]
+  commentsConnection(sort: String, limit: Int, start: Int, where: JSON): CommentConnection
   deck(id: ID!): Deck
   decks(sort: String, limit: Int, start: Int, where: JSON): [Deck]
   decksConnection(sort: String, limit: Int, start: Int, where: JSON): DeckConnection
+  forum(id: ID!): Forum
+  forums(sort: String, limit: Int, start: Int, where: JSON): [Forum]
+  forumsConnection(sort: String, limit: Int, start: Int, where: JSON): ForumConnection
+  section(id: ID!): Section
+  sections(sort: String, limit: Int, start: Int, where: JSON): [Section]
+  sectionsConnection(sort: String, limit: Int, start: Int, where: JSON): SectionConnection
+  thread(id: ID!): Thread
+  threads(sort: String, limit: Int, start: Int, where: JSON): [Thread]
+  threadsConnection(sort: String, limit: Int, start: Int, where: JSON): ThreadConnection
   update(id: ID!): Updates
   updates(sort: String, limit: Int, start: Int, where: JSON): [Updates]
   updatesConnection(sort: String, limit: Int, start: Int, where: JSON): UpdatesConnection
@@ -286,6 +522,144 @@ input RoleInput {
   users: [ID]
 }
 
+"""Cluster of related Forums"""
+type Section {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String
+}
+
+type SectionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type SectionConnection {
+  values: [Section]
+  groupBy: SectionGroupBy
+  aggregate: SectionAggregator
+}
+
+type SectionConnection_id {
+  key: ID
+  connection: SectionConnection
+}
+
+type SectionConnectionCreatedAt {
+  key: DateTime
+  connection: SectionConnection
+}
+
+type SectionConnectionId {
+  key: ID
+  connection: SectionConnection
+}
+
+type SectionConnectionTitle {
+  key: String
+  connection: SectionConnection
+}
+
+type SectionConnectionUpdatedAt {
+  key: DateTime
+  connection: SectionConnection
+}
+
+type SectionGroupBy {
+  _id: [SectionConnection_id]
+  id: [SectionConnectionId]
+  createdAt: [SectionConnectionCreatedAt]
+  updatedAt: [SectionConnectionUpdatedAt]
+  title: [SectionConnectionTitle]
+}
+
+input SectionInput {
+  title: String
+}
+
+type Thread {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  thread: String
+  creator: UsersPermissionsUser
+  forum: Forum
+}
+
+type ThreadAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ThreadConnection {
+  values: [Thread]
+  groupBy: ThreadGroupBy
+  aggregate: ThreadAggregator
+}
+
+type ThreadConnection_id {
+  key: ID
+  connection: ThreadConnection
+}
+
+type ThreadConnectionCreatedAt {
+  key: DateTime
+  connection: ThreadConnection
+}
+
+type ThreadConnectionCreator {
+  key: ID
+  connection: ThreadConnection
+}
+
+type ThreadConnectionForum {
+  key: ID
+  connection: ThreadConnection
+}
+
+type ThreadConnectionId {
+  key: ID
+  connection: ThreadConnection
+}
+
+type ThreadConnectionThread {
+  key: String
+  connection: ThreadConnection
+}
+
+type ThreadConnectionUpdatedAt {
+  key: DateTime
+  connection: ThreadConnection
+}
+
+type ThreadGroupBy {
+  _id: [ThreadConnection_id]
+  id: [ThreadConnectionId]
+  createdAt: [ThreadConnectionCreatedAt]
+  updatedAt: [ThreadConnectionUpdatedAt]
+  thread: [ThreadConnectionThread]
+  creator: [ThreadConnectionCreator]
+  forum: [ThreadConnectionForum]
+}
+
+input ThreadInput {
+  thread: String
+  creator: ID
+  forum: ID
+}
+
+input updateCommentInput {
+  where: InputID
+  data: editCommentInput
+}
+
+type updateCommentPayload {
+  comment: Comment
+}
+
 input updateDeckInput {
   where: InputID
   data: editDeckInput
@@ -293,6 +667,15 @@ input updateDeckInput {
 
 type updateDeckPayload {
   deck: Deck
+}
+
+input updateForumInput {
+  where: InputID
+  data: editForumInput
+}
+
+type updateForumPayload {
+  forum: Forum
 }
 
 input updateRoleInput {
@@ -361,6 +744,15 @@ type UpdatesConnectionUpdatedAt {
   connection: UpdatesConnection
 }
 
+input updateSectionInput {
+  where: InputID
+  data: editSectionInput
+}
+
+type updateSectionPayload {
+  section: Section
+}
+
 type UpdatesGroupBy {
   _id: [UpdatesConnection_id]
   id: [UpdatesConnectionId]
@@ -375,6 +767,15 @@ input UpdatesInput {
   title: String
   body: String
   creator: ID
+}
+
+input updateThreadInput {
+  where: InputID
+  data: editThreadInput
+}
+
+type updateThreadPayload {
+  thread: Thread
 }
 
 input updateUpdatesInput {

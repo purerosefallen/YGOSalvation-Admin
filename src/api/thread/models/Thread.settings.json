@@ -1,0 +1,23 @@
+{
+  "connection": "default",
+  "collectionName": "thread",
+  "info": {
+    "name": "thread",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "thread": {
+      "type": "string"
+    },
+    "creator": {
+      "model": "user",
+      "plugin": "users-permissions"
+    },
+    "forum": {
+      "model": "forum"
+    }
+  }
+}
