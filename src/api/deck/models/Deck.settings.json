@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "deck",
+  "info": {
+    "name": "deck",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "user": {
+      "model": "user",
+      "plugin": "users-permissions"
+    },
+    "main": {
+      "type": "json"
+    },
+    "extra": {
+      "type": "json"
+    },
+    "side": {
+      "type": "json"
+    }
+  }
+}

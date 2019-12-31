@@ -1,3 +1,11 @@
+input createDeckInput {
+  data: DeckInput
+}
+
+type createDeckPayload {
+  deck: Deck
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -19,6 +27,94 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+type Deck {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: UsersPermissionsUser
+  main: JSON
+  extra: JSON
+  side: JSON
+}
+
+type DeckAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type DeckConnection {
+  values: [Deck]
+  groupBy: DeckGroupBy
+  aggregate: DeckAggregator
+}
+
+type DeckConnection_id {
+  key: ID
+  connection: DeckConnection
+}
+
+type DeckConnectionCreatedAt {
+  key: DateTime
+  connection: DeckConnection
+}
+
+type DeckConnectionExtra {
+  key: JSON
+  connection: DeckConnection
+}
+
+type DeckConnectionId {
+  key: ID
+  connection: DeckConnection
+}
+
+type DeckConnectionMain {
+  key: JSON
+  connection: DeckConnection
+}
+
+type DeckConnectionSide {
+  key: JSON
+  connection: DeckConnection
+}
+
+type DeckConnectionUpdatedAt {
+  key: DateTime
+  connection: DeckConnection
+}
+
+type DeckConnectionUser {
+  key: ID
+  connection: DeckConnection
+}
+
+type DeckGroupBy {
+  _id: [DeckConnection_id]
+  id: [DeckConnectionId]
+  createdAt: [DeckConnectionCreatedAt]
+  updatedAt: [DeckConnectionUpdatedAt]
+  user: [DeckConnectionUser]
+  main: [DeckConnectionMain]
+  extra: [DeckConnectionExtra]
+  side: [DeckConnectionSide]
+}
+
+input DeckInput {
+  user: ID
+  main: JSON
+  extra: JSON
+  side: JSON
+}
+
+input deleteDeckInput {
+  where: InputID
+}
+
+type deleteDeckPayload {
+  deck: Deck
+}
+
 input deleteRoleInput {
   where: InputID
 }
@@ -33,6 +129,13 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editDeckInput {
+  user: ID
+  main: JSON
+  extra: JSON
+  side: JSON
 }
 
 input editRoleInput {
@@ -66,9 +169,13 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createDeck(input: createDeckInput): createDeckPayload
+  updateDeck(input: updateDeckInput): updateDeckPayload
+  deleteDeck(input: deleteDeckInput): deleteDeckPayload
+
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
@@ -89,6 +196,9 @@ type Mutation {
 }
 
 type Query {
+  deck(id: ID!): Deck
+  decks(sort: String, limit: Int, start: Int, where: JSON): [Deck]
+  decksConnection(sort: String, limit: Int, start: Int, where: JSON): DeckConnection
   role(id: ID!): UsersPermissionsRole
 
   """
@@ -108,6 +218,15 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input updateDeckInput {
+  where: InputID
+  data: editDeckInput
+}
+
+type updateDeckPayload {
+  deck: Deck
 }
 
 input updateRoleInput {
