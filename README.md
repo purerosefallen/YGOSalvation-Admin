@@ -13,25 +13,10 @@ cd src
 npm install
 ```
 #Configuration
-- In `src/configuration/enviroments/<enviroment>/database.json` edit the connection information
+- Setup a MongoDB user
+- Use `.env.sample` to a create a `.env` file with the proper configurations
 ```
-{
-  "defaultConnection": "default",
-  "connections": {
-    "default": {
-      "connector": "strapi-hook-mongoose",
-      "settings": {
-        "client": "mongo",
-        "host": "127.0.0.1",
-        "port": 27017,
-        "database": "salvation",
-        "username": "<username>",
-        "password": "<password"
-      },
-      "options": {}
-    }
-  }
-}
+
 ```
 
 #Start
