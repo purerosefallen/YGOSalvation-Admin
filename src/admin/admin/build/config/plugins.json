@@ -1,0 +1,18 @@
+[
+  {
+    "id": "content-manager",
+    "source": {
+      "development": "/content-manager/main.js",
+      "production": "/content-manager/main.js",
+      "staging": "/content-manager/main.js"
+    }
+  },
+  {
+    "id": "content-type-builder",
+    "source": {
+      "development": "/content-type-builder/main.js",
+      "production": "/content-type-builder/main.js",
+      "staging": "/content-type-builder/main.js"
+    }
+  }
+]
