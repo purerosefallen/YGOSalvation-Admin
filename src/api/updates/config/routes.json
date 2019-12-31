@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/updates",
+      "handler": "Updates.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/updates/count",
+      "handler": "Updates.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/updates/:_id",
+      "handler": "Updates.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/updates",
+      "handler": "Updates.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/updates/:_id",
+      "handler": "Updates.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/updates/:_id",
+      "handler": "Updates.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
