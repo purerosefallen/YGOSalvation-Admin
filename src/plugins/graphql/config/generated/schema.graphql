@@ -102,6 +102,14 @@ type createForumPayload {
   forum: Forum
 }
 
+input createReplayInput {
+  data: ReplayInput
+}
+
+type createReplayPayload {
+  replay: Replay
+}
+
 input createRoleInput {
   data: RoleInput
 }
@@ -267,6 +275,14 @@ type deleteForumPayload {
   forum: Forum
 }
 
+input deleteReplayInput {
+  where: InputID
+}
+
+type deleteReplayPayload {
+  replay: Replay
+}
+
 input deleteRoleInput {
   where: InputID
 }
@@ -349,6 +365,11 @@ input editForumInput {
   comments: [ID]
   threads: [ID]
   link: String
+}
+
+input editReplayInput {
+  history: JSON
+  creator: ID
 }
 
 input editRoleInput {
@@ -499,7 +520,7 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Comment | createCommentPayload | updateCommentPayload | deleteCommentPayload | CommentConnection | CommentAggregator | CommentGroupBy | CommentConnection_id | CommentConnectionId | CommentConnectionCreatedAt | CommentConnectionUpdatedAt | CommentConnectionContent | CommentConnectionUser | CommentConnectionThread | CommentConnectionForum | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | Forum | createForumPayload | updateForumPayload | deleteForumPayload | ForumConnection | ForumAggregator | ForumGroupBy | ForumConnection_id | ForumConnectionId | ForumConnectionCreatedAt | ForumConnectionUpdatedAt | ForumConnectionTitle | ForumConnectionDescription | ForumConnectionLink | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionAggregatorSum | SectionAggregatorAvg | SectionAggregatorMin | SectionAggregatorMax | SectionGroupBy | SectionConnection_id | SectionConnectionId | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionTitle | SectionConnectionLink | SectionConnectionIndex | Thread | createThreadPayload | updateThreadPayload | deleteThreadPayload | ThreadConnection | ThreadAggregator | ThreadGroupBy | ThreadConnection_id | ThreadConnectionId | ThreadConnectionCreatedAt | ThreadConnectionUpdatedAt | ThreadConnectionThread | ThreadConnectionCreator | ThreadConnectionForum | Tournament | createTournamentPayload | updateTournamentPayload | deleteTournamentPayload | TournamentConnection | TournamentAggregator | TournamentGroupBy | TournamentConnection_id | TournamentConnectionId | TournamentConnectionCreatedAt | TournamentConnectionUpdatedAt | TournamentConnectionCreator | TournamentConnectionStarted | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserAggregatorSum | UsersPermissionsUserAggregatorAvg | UsersPermissionsUserAggregatorMin | UsersPermissionsUserAggregatorMax | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionTournament | UsersPermissionsUserConnectionElo | UsersPermissionsUserConnectionService | UsersPermissionsUserConnectionPoints
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Comment | createCommentPayload | updateCommentPayload | deleteCommentPayload | CommentConnection | CommentAggregator | CommentGroupBy | CommentConnection_id | CommentConnectionId | CommentConnectionCreatedAt | CommentConnectionUpdatedAt | CommentConnectionContent | CommentConnectionUser | CommentConnectionThread | CommentConnectionForum | Deck | createDeckPayload | updateDeckPayload | deleteDeckPayload | DeckConnection | DeckAggregator | DeckGroupBy | DeckConnection_id | DeckConnectionId | DeckConnectionCreatedAt | DeckConnectionUpdatedAt | DeckConnectionUser | DeckConnectionMain | DeckConnectionExtra | DeckConnectionSide | DeckConnectionName | Forum | createForumPayload | updateForumPayload | deleteForumPayload | ForumConnection | ForumAggregator | ForumGroupBy | ForumConnection_id | ForumConnectionId | ForumConnectionCreatedAt | ForumConnectionUpdatedAt | ForumConnectionTitle | ForumConnectionDescription | ForumConnectionLink | Replay | createReplayPayload | updateReplayPayload | deleteReplayPayload | ReplayConnection | ReplayAggregator | ReplayGroupBy | ReplayConnection_id | ReplayConnectionId | ReplayConnectionCreatedAt | ReplayConnectionUpdatedAt | ReplayConnectionHistory | ReplayConnectionCreator | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionAggregatorSum | SectionAggregatorAvg | SectionAggregatorMin | SectionAggregatorMax | SectionGroupBy | SectionConnection_id | SectionConnectionId | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionTitle | SectionConnectionLink | SectionConnectionIndex | Thread | createThreadPayload | updateThreadPayload | deleteThreadPayload | ThreadConnection | ThreadAggregator | ThreadGroupBy | ThreadConnection_id | ThreadConnectionId | ThreadConnectionCreatedAt | ThreadConnectionUpdatedAt | ThreadConnectionThread | ThreadConnectionCreator | ThreadConnectionForum | Tournament | createTournamentPayload | updateTournamentPayload | deleteTournamentPayload | TournamentConnection | TournamentAggregator | TournamentGroupBy | TournamentConnection_id | TournamentConnectionId | TournamentConnectionCreatedAt | TournamentConnectionUpdatedAt | TournamentConnectionCreator | TournamentConnectionStarted | Updates | createUpdatesPayload | updateUpdatesPayload | deleteUpdatesPayload | UpdatesConnection | UpdatesAggregator | UpdatesGroupBy | UpdatesConnection_id | UpdatesConnectionId | UpdatesConnectionCreatedAt | UpdatesConnectionUpdatedAt | UpdatesConnectionTitle | UpdatesConnectionBody | UpdatesConnectionCreator | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionId | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserAggregatorSum | UsersPermissionsUserAggregatorAvg | UsersPermissionsUserAggregatorMin | UsersPermissionsUserAggregatorMax | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionTournament | UsersPermissionsUserConnectionElo | UsersPermissionsUserConnectionService | UsersPermissionsUserConnectionPoints
 
 type Mutation {
   createComment(input: createCommentInput): createCommentPayload
@@ -511,6 +532,9 @@ type Mutation {
   createForum(input: createForumInput): createForumPayload
   updateForum(input: updateForumInput): updateForumPayload
   deleteForum(input: deleteForumInput): deleteForumPayload
+  createReplay(input: createReplayInput): createReplayPayload
+  updateReplay(input: updateReplayInput): updateReplayPayload
+  deleteReplay(input: deleteReplayInput): deleteReplayPayload
   createSection(input: createSectionInput): createSectionPayload
   updateSection(input: updateSectionInput): updateSectionPayload
   deleteSection(input: deleteSectionInput): deleteSectionPayload
@@ -554,6 +578,9 @@ type Query {
   forum(id: ID!): Forum
   forums(sort: String, limit: Int, start: Int, where: JSON): [Forum]
   forumsConnection(sort: String, limit: Int, start: Int, where: JSON): ForumConnection
+  replay(id: ID!): Replay
+  replays(sort: String, limit: Int, start: Int, where: JSON): [Replay]
+  replaysConnection(sort: String, limit: Int, start: Int, where: JSON): ReplayConnection
   section(id: ID!): Section
   sections(sort: String, limit: Int, start: Int, where: JSON): [Section]
   sectionsConnection(sort: String, limit: Int, start: Int, where: JSON): SectionConnection
@@ -579,6 +606,71 @@ type Query {
   users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
   usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
   me: UsersPermissionsMe
+}
+
+"""Recorded Duels"""
+type Replay {
+  _id: ID!
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  history: JSON
+  creator: UsersPermissionsUser
+}
+
+type ReplayAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type ReplayConnection {
+  values: [Replay]
+  groupBy: ReplayGroupBy
+  aggregate: ReplayAggregator
+}
+
+type ReplayConnection_id {
+  key: ID
+  connection: ReplayConnection
+}
+
+type ReplayConnectionCreatedAt {
+  key: DateTime
+  connection: ReplayConnection
+}
+
+type ReplayConnectionCreator {
+  key: ID
+  connection: ReplayConnection
+}
+
+type ReplayConnectionHistory {
+  key: JSON
+  connection: ReplayConnection
+}
+
+type ReplayConnectionId {
+  key: ID
+  connection: ReplayConnection
+}
+
+type ReplayConnectionUpdatedAt {
+  key: DateTime
+  connection: ReplayConnection
+}
+
+type ReplayGroupBy {
+  _id: [ReplayConnection_id]
+  id: [ReplayConnectionId]
+  createdAt: [ReplayConnectionCreatedAt]
+  updatedAt: [ReplayConnectionUpdatedAt]
+  history: [ReplayConnectionHistory]
+  creator: [ReplayConnectionCreator]
+}
+
+input ReplayInput {
+  history: JSON
+  creator: ID
 }
 
 input RoleInput {
@@ -845,6 +937,15 @@ input updateForumInput {
 
 type updateForumPayload {
   forum: Forum
+}
+
+input updateReplayInput {
+  where: InputID
+  data: editReplayInput
+}
+
+type updateReplayPayload {
+  replay: Replay
 }
 
 input updateRoleInput {

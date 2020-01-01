@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/replays",
+      "handler": "Replay.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/replays/count",
+      "handler": "Replay.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/replays/:_id",
+      "handler": "Replay.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/replays",
+      "handler": "Replay.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/replays/:_id",
+      "handler": "Replay.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/replays/:_id",
+      "handler": "Replay.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "replay",
+    "description": "Recorded Duels"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "history": {
+      "type": "json"
+    },
+    "creator": {
+      "model": "user",
+      "plugin": "users-permissions"
+    }
+  }
+}
