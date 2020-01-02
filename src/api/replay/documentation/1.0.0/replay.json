@@ -564,6 +564,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           }

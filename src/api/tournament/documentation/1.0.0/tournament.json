@@ -561,6 +561,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           },
@@ -611,6 +614,9 @@
                 },
                 "points": {
                   "type": "integer"
+                },
+                "avatar": {
+                  "type": "string"
                 }
               }
             }

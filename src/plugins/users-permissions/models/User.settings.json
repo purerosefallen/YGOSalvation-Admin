@@ -63,6 +63,11 @@
     "points": {
       "type": "integer",
       "default": "0"
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
     }
   },
   "collectionName": "users-permissions_user"

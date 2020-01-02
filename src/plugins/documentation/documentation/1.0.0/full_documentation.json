@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/31/2019 7:15:08 PM"
+    "x-generation-date": "01/01/2020 7:51:41 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -6196,6 +6196,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           },
@@ -6320,6 +6323,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           },
@@ -6503,6 +6509,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           }
@@ -6606,6 +6615,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           },
@@ -6708,6 +6720,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           },
@@ -6758,6 +6773,9 @@
                 },
                 "points": {
                   "type": "integer"
+                },
+                "avatar": {
+                  "type": "string"
                 }
               }
             }
@@ -6842,6 +6860,9 @@
               },
               "points": {
                 "type": "integer"
+              },
+              "avatar": {
+                "type": "string"
               }
             }
           }
@@ -7001,6 +7022,9 @@
                 },
                 "points": {
                   "type": "integer"
+                },
+                "avatar": {
+                  "type": "string"
                 }
               }
             }
@@ -7129,6 +7153,52 @@
           "points": {
             "type": "integer",
             "default": "0"
+          },
+          "avatar": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "public_id": {
+                "type": "string"
+              },
+              "related": {
+                "type": "string"
+              }
+            }
           }
         }
       },
